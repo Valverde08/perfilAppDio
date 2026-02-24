@@ -1,13 +1,26 @@
-import { View, Text, Button } from "react-native";
-import React from "react";
+import { View, Text, Button, TouchableWithoutFeedback } from "react-native";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import Perfil from "../../components/Perfil/Perfil";
+import Skills from "../../components/Skills/Skills";
 
 export default function Profile() {
-  const navigation = useNavigation();
+  const [ligado,setLigado] = useState<boolean>(false)
+  
+      function switchStart(){
+          return setLigado(!ligado)
+      }
+  
   return (
     <View>
-      <Text>Profile</Text>
-      <Button title="Home" onPress={() => navigation.navigate("home")} />
+      <Perfil nome="Minhas Habilidades" />
+      {ligado ? (<TouchableWithoutFeedback onPress={switchStart}>
+                    <Text>CLicque Aqui para ligar</Text>
+                 </TouchableWithoutFeedback>):
+            (
+            <TouchableWithoutFeedback onPress={switchStart}>
+                    <Text>CLicque Aqui para desligar</Text>
+            </TouchableWithoutFeedback>)}
     </View>
   );
 }

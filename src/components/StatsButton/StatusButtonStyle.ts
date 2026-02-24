@@ -5,6 +5,7 @@ const style = StyleSheet.create({
     width: "80%",
     height: 60,
     backgroundColor: "#6b6565",
+    borderRadius:8
   },
   Label: {
     textAlign: "center",
