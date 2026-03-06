@@ -1,15 +1,10 @@
-import {
-  View,
-  Text,
-  Button,
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from "react-native";
+import { Linking, View } from "react-native";
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import Perfil from "../../components/Perfil/Perfil";
+
+import styles from "./ProfileStyle";
 import Skills from "../../components/Skills/Skills";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import StatusButton from "../../components/StatsButton/StatusButton";
 
 export default function Profile() {
   const [star1, setStar1] = useState<boolean>(true);
@@ -43,35 +38,18 @@ export default function Profile() {
   }
 
   return (
-    <View>
+    <View style={styles.mainContainerProfile}>
       <Perfil nome="Minhas Habilidades" />
-      {star1 ? (
-        <TouchableWithoutFeedback onPress={switchStar1}>
-          <AntDesign name="star" size={24} color="black" />
-        </TouchableWithoutFeedback>
-      ) : (
-        <TouchableWithoutFeedback onPress={switchStar1}>
-          <AntDesign name="star" size={24} color="yellow" />
-        </TouchableWithoutFeedback>
-      )}
-      {star2 ? (
-        <TouchableWithoutFeedback onPress={switchStar2}>
-          <AntDesign name="star" size={24} color="black" />
-        </TouchableWithoutFeedback>
-      ) : (
-        <TouchableWithoutFeedback onPress={switchStar2}>
-          <AntDesign name="star" size={24} color="yellow" />
-        </TouchableWithoutFeedback>
-      )}
-      {star3 ? (
-        <TouchableWithoutFeedback onPress={switchStar3}>
-          <AntDesign name="star" size={24} color="black" />
-        </TouchableWithoutFeedback>
-      ) : (
-        <TouchableWithoutFeedback onPress={switchStar3}>
-          <AntDesign name="star" size={24} color="yellow" />
-        </TouchableWithoutFeedback>
-      )}
+      <View style={styles.startCOntainer}>
+        <Skills name="CSS" />
+        <Skills name="HTML" />
+        <Skills name="JS Script" />
+      </View>
+
+      <StatusButton
+        name="Fale Comigo"
+        onPress={() => Linking.openURL("https://www.whatsapp.com")}
+      />
     </View>
   );
 }

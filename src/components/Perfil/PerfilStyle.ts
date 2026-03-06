@@ -4,6 +4,7 @@ const style = StyleSheet.create({
   containerPerfil: {
     justifyContent: "center",
     alignItems: "center",
+    height: 200,
   },
   perfilFoto: {
     width: 50,
